@@ -38,37 +38,6 @@ def init_uniformDemand_matrix(G):
                 D[i][j] = 0
     return D
 
-def calc_cost(G,D):
-    """Returns the cost of traffic on a graph
-    
-    Args:
-        G (networkx.classes.graph.Graph): network graph
-        D (numpy.ndarray): Demand Graph
-    Returns:
-        cost (numpy.ndarray): cost of total traffic between nodes of G
-    """
-    nodesList = list(G.nodes)
-    allShortestPath = nx.shortest_path(G)
-    allShortestPathCost = [len(allShortestPath[i][j])*D[i][j] for i in nodesList for j in nodesList if i!=j]
-    return sum(allShortestPathCost)
-
-def calc_totalTrafficCost_single_node(node,destination,demandMatrix,G):
-
-    shortestDistanceHopLength = [nx.shortest_path_length(G, node, i) for i in list(G.nodes)]
-    costMatrix = [shortestDistanceHopLength[i]*demandMatrix[node][i] for i in destination]
-    
-    return sum(costMatrix)
-
-def SP_edgeList(G,s,t):
-    """
-    Returns: Shortest Path as list of edge pairs
-    """
-    allShortestPath = nx.shortest_path(G)
-    pathEdgeList = []
-    for i in range(len(allShortestPath[s][t])-1):
-        pathEdgeList.append((i,allShortestPath[s][t][i+1]))
-    return pathEdgeList
-
 def complete_node_pair_list(G):
     """
     Returns: list of all possible outgoin node pairings. One row per node at row index
@@ -92,7 +61,36 @@ def complete_node_pair_list_noDuplication(G):
             nodePairList.append((i,j))
     return nodePairList
 
+def calc_cost(G,D):
+    """Returns the cost of traffic on a graph
+    
+    Args:
+        G (networkx.classes.graph.Graph): network graph
+        D (numpy.ndarray): Demand Graph
+    Returns:
+        cost (numpy.ndarray): cost of total traffic between nodes of G (i.e. the number of nodes in the path minus 1)
+    """
+    nodesList = complete_node_pair_list_noDuplication(G)
+    allShortestPath = nx.shortest_path(G)
+    allShortestPathCost = [(len(allShortestPath[i][j])-1)*D[i][j] for (i,j) in nodesList]
+    return sum(allShortestPathCost)
 
+def calc_totalTrafficCost_single_node(node,destination,demandMatrix,G):
+
+    shortestDistanceHopLength = [nx.shortest_path_length(G, node, i) for i in list(G.nodes)]
+    costMatrix = [shortestDistanceHopLength[i]*demandMatrix[node][i] for i in destination]
+    
+    return sum(costMatrix)
+
+def SP_edgeList(G,s,t):
+    """
+    Returns: Shortest Path as list of edge pairs
+    """
+    allShortestPath = nx.shortest_path(G)
+    pathEdgeList = []
+    for i in range(len(allShortestPath[s][t])-1):
+        pathEdgeList.append((i,allShortestPath[s][t][i+1]))
+    return pathEdgeList
 
 # Helper functions
 # Binary Tranformations and Operations
