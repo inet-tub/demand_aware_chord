@@ -38,6 +38,23 @@ def init_uniformDemand_matrix(G):
                 D[i][j] = 0
     return D
 
+def init_uniformDemand_matrix_symmetric(G):
+    """Returns a demand matrix, where each peer pair has the same demand in %
+    
+    Args:
+        G (networkx.classes.graph.Graph): 
+        
+    Returns:
+        D (numpy.ndarray): matrix with unformly distributed demands for all node pairs
+    
+    """
+    nodesList = G.nodes
+    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1))),8)
+    D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
+    for i in range(len(nodesList)):
+        D[i][i] = 0
+    return D
+
 def complete_node_pair_list(G):
     """
     Returns: list of all possible outgoin node pairings. One row per node at row index
