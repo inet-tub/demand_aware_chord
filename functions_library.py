@@ -30,7 +30,7 @@ def init_uniformDemand_matrix(G):
     
     """
     nodesList = G.nodes
-    uniformTraffic = round(1/(len(nodesList)*(len(nodesList)-1)),8)
+    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
     D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
         for j in range(len(nodesList)):
@@ -49,8 +49,7 @@ def calc_cost(G,D):
     """
     nodesList = list(G.nodes)
     allShortestPath = nx.shortest_path(G)
-    allShortestPathCost = [(len(allShortestPath[i][j])-1)*D[i][j]
-                             for i in nodesList for j in nodesList if i!=j]
+    allShortestPathCost = [len(allShortestPath[i][j])*D[i][j] for i in nodesList for j in nodesList if i!=j]
     return sum(allShortestPathCost)
 
 def calc_totalTrafficCost_single_node(node,destination,demandMatrix,G):
@@ -93,16 +92,6 @@ def complete_node_pair_list_noDuplication(G):
             nodePairList.append((i,j))
     return nodePairList
 
-#Demand Matrix
-def init_demand_matrix(G):
-    """Returns a demand matrix, where each peer pair has the same demand in %"""
-    nodesList = G.nodes
-    print(len(nodesList))
-    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
-    demandMatrix = np.full((len(nodesList),len(nodesList)),uniformTraffic)
-    for i in range(len(nodesList)):
-        demandMatrix[i][i] = 0
-    return demandMatrix
 
 
 # Helper functions
