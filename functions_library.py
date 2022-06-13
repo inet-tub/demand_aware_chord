@@ -33,7 +33,9 @@ def init_uniformDemand_matrix(G):
     uniformTraffic = round(1/(len(nodesList)*(len(nodesList)-1)),8)
     D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
-        D[i][i] = 0
+        for j in range(len(nodesList)):
+            if i >= j:
+                D[i][j] = 0
     return D
 
 def calc_cost(G,D):
@@ -96,7 +98,7 @@ def init_demand_matrix(G):
     """Returns a demand matrix, where each peer pair has the same demand in %"""
     nodesList = G.nodes
     print(len(nodesList))
-    uniformTraffic = round(1/(len(nodesList)*(len(nodesList)-1)),8)
+    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
     demandMatrix = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
         demandMatrix[i][i] = 0
