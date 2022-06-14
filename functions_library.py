@@ -49,7 +49,7 @@ def init_uniformDemand_matrix_symmetric(G):
     
     """
     nodesList = G.nodes
-    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1))),8)
+    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
     D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
         D[i][i] = 0
