@@ -15,8 +15,8 @@ def init_ring(n):
     for i in range(n): G.add_node(i)
     for i in range(n-1): G.add_edge(i,i+1)
     G.add_edge(0,n-1)
-    pos = nx.circular_layout(G)
-    nx.draw_networkx(G,pos=pos,with_labels=True)
+    #pos = nx.circular_layout(G)
+    #nx.draw_networkx(G,pos=pos,with_labels=True)
     return(G)
 
 def init_uniformDemand_matrix(G):
@@ -30,7 +30,7 @@ def init_uniformDemand_matrix(G):
     
     """
     nodesList = G.nodes
-    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
+    uniformTraffic = round(1/(len(nodesList)-1),8)
     D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
         for j in range(len(nodesList)):
@@ -49,7 +49,7 @@ def init_uniformDemand_matrix_symmetric(G):
     
     """
     nodesList = G.nodes
-    uniformTraffic = round(1/((len(nodesList)*(len(nodesList)-1)/2)),8)
+    uniformTraffic = round(1/(len(nodesList)-1),8)
     D = np.full((len(nodesList),len(nodesList)),uniformTraffic)
     for i in range(len(nodesList)):
         D[i][i] = 0
