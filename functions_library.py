@@ -109,7 +109,7 @@ def calc_cost(G,D):
     Returns:
         cost (numpy.ndarray): cost of total traffic between nodes of G (i.e. the number of nodes in the path minus 1)
     """
-    nodesList = complete_node_pair_list_noDuplication(G)
+    nodesList = complete_node_pair_list(G)
     allShortestPath = nx.shortest_path(G)
     allShortestPathCost = [(len(allShortestPath[i][j])-1)*D[i][j] for (i,j) in nodesList]
     return sum(allShortestPathCost)
