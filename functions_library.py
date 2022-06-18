@@ -18,7 +18,7 @@ def init_ring(n):
     #pos = nx.circular_layout(G)
     #nx.draw_networkx(G,pos=pos,with_labels=True)
     return(G)
-
+# Demand Matrices:
 def init_uniformDemand_matrix(G):
     """Returns a demand matrix, where each peer pair has the same demand in %
     
@@ -54,6 +54,29 @@ def init_uniformDemand_matrix_symmetric(G):
     for i in range(len(nodesList)):
         D[i][i] = 0
     return D
+## Zipf
+
+def init_zipfDemandM(G):
+    """Returns a demand matrix, where each peer pair has the same demand in %
+    
+    Args:
+        G (networkx.classes.graph.Graph): 
+        
+    Returns:
+        D (numpy.ndarray): matrix with zipfian distributed demands for all node pairs
+    
+    """
+    nodesList = G.nodes
+    D = np.full((len(nodesList),len(nodesList)),0.0)
+    for i in range(len(nodesList)):
+        zipfTraffic = np.random.zipf(2,len(nodesList)-1)
+        sumZipf = sum(zipfTraffic)
+        for j in range(i+1,len(nodesList)):
+            D[i][j] = zipfTraffic[j-1]/sumZipf
+            D[j][i] = zipfTraffic[j-1]/sumZipf
+    return D
+
+
 
 def complete_node_pair_list(G):
     """
@@ -62,9 +85,8 @@ def complete_node_pair_list(G):
     nodePairList =[]
     nodes = G.nodes
     for i in G.nodes:
-        nodePairList.append([])
         for j in G.nodes:
-            nodePairList[i].append((i,j))
+            nodePairList.append((i,j))
     return nodePairList
 
 def complete_node_pair_list_noDuplication(G):
@@ -74,7 +96,7 @@ def complete_node_pair_list_noDuplication(G):
     nodePairList =[]
     nodes = G.nodes
     for i in G.nodes:
-        for j in range(i,len(G.nodes)):
+        for j in range(i+1,len(G.nodes)):
             nodePairList.append((i,j))
     return nodePairList
 
