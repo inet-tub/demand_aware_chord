@@ -11,6 +11,8 @@ import math
 from functions_library import *
 
 opt_mod = gb.Model(name="linear programm")
+#m.setParam("TimeLimit", 100.0);
+
 
 
 def gurobi_optimal(G,D):
