@@ -29,6 +29,12 @@ BS := Binary Search
 :heavy_check_mark: := ready and tested  
 :white_check_mark: := needs optimization
 
+## Input (e.g. D:= Demand Matrix)
+* uniform Distribution
+* Zipfian Distribution
+* Random
+* Single Pair's heavy traffic
+
 
 ### Notes on ILP (Gurobi Optimization)
 Using the Gurobi optimizer, I want to construct an LP that constructs the optimal network graph from a Demand matrix.  
