@@ -6,3 +6,8 @@ Args:
 
 ## Gurobi Optimization
 Using the Gurobi optimizer, I want to construct an LP that constructs the optimal network graph from a Demand matrix
+
+
+
+## Costraints
+* Each node has at most (log_2 |V| + 1) edges.
