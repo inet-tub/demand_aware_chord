@@ -11,6 +11,8 @@ Find a "good" algorithm, in terms of run-time (efficiency) and correctness (near
 
 ## Costraints
 * Each node has at most (log_2 |V| + 1) edges.
+* undirected Graph
+* Ring structure needs to stay
 
 ## Discussed Algorithms and status of implementation
 | Name               | Status            |
@@ -28,8 +30,13 @@ Find a "good" algorithm, in terms of run-time (efficiency) and correctness (near
 :white_check_mark: := needs optimization
 
 
-## Gurobi Optimization
-Using the Gurobi optimizer, I want to construct an LP that constructs the optimal network graph from a Demand matrix
+### Notes on ILP (Gurobi Optimization)
+Using the Gurobi optimizer, I want to construct an LP that constructs the optimal network graph from a Demand matrix.  
+In this subchapter I want to keep track of some issues I encoutnered and how to solve them.
+
+
+## Future Work 
+In this subchapter I keep track of ideas for future work.
 
 
 
