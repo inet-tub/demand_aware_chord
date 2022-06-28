@@ -9,3 +9,4 @@ To keep track of goals, progress and gained Knowledge
 * fixed some errors in BS_Half
 * cleaned up repository
 * REMEMBER: always look for example inputs (e.g. D) that breaks the algo
+![Whiteboard](img/28_06.jpg)
