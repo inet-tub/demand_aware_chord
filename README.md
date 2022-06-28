@@ -17,15 +17,15 @@ Find a "good" algorithm, in terms of run-time (efficiency) and correctness (near
 ## Discussed Algorithms and status of implementation
 | Name               | Status            |
 | --------           | ----              |
-| BS-CHORD           | :heavy_check_mark:|
-| BS-binarySwap      | :heavy_check_mark:|
-| BS-halving         | :white_check_mark:|
+| BS_CHORD           | :heavy_check_mark:|
+| BS_binarySwap      | :heavy_check_mark:|
+| BS_halving         | :white_check_mark:|
 | ILP                | :white_check_mark:|
-| BS_bothwayRecursive| in progress      |
-| BS_bothwayPhase    | in progress     |
-|                    |      |
+| BS_demandAware     | :white_check_mark:|
+| BS_bothwayRecursive| in progress       |
+| BS_bothwayPhase    | in progress       |
 
-
+BS := Binary Search
 :heavy_check_mark: := ready and tested  
 :white_check_mark: := needs optimization
 
