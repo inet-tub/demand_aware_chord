@@ -12,6 +12,5 @@ To keep track of goals, progress and gained Knowledge
 ![Whiteboard](img/28_06.jpg)
 
 ## 39. June
-
-![ILP old](img/30_06a.jpg)
-![ILP new](img/30_06b.jpg)
+![ILP old](img/30_6a.jpg)
+![ILP new](img/30_6b.jpg)
