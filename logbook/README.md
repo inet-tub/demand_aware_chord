@@ -17,6 +17,9 @@ To keep track of goals, progress and gained Knowledge
 
 ## 1. July
 * Implemented new ILP
+* k=0 constraint: SP[0,i,j] == ((1-e[i][j])*n)+(e[i][j])
+* The constraint: SP[k][i][j] = min(SP[k-1][i][j],SP[k-1][i][k]+SP[k-1][k][j]) is not implementable in gurobi
+
 
 
 ## 2. July
