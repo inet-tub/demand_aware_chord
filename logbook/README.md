@@ -11,6 +11,12 @@ To keep track of goals, progress and gained Knowledge
 * REMEMBER: always look for example inputs (e.g. D) that breaks the algo
 ![Whiteboard](img/28_06.jpg)
 
-## 39. June
+## 30. June
 ![ILP old](img/30_6a.jpg)
 ![ILP new](img/30_6b.jpg)
+
+## 1. July
+* Implemented new ILP
+
+
+## 2. July
