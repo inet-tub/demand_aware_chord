@@ -21,4 +21,9 @@ To keep track of goals, progress and gained Knowledge
 * The constraint: SP[k][i][j] = min(SP[k-1][i][j],SP[k-1][i][k]+SP[k-1][k][j]) is not implementable in gurobi
 
 ## 2. July
-* [indicator constraints](https://www.gurobi.com/documentation/9.1/refman/py_model_agc_indicator.html) do not help with the flow-constraint problem, but might be useful later
+* [indicator constraints](https://www.gurobi.com/documentation/9.1/refman/py_model_agc_indicator.html) do not help with the flow-constraint problem, but might be useful later, e.g. `mod.addGenConstrIndicator(e[i,j],True,sum(flow[i,j,:]) == 2.0)`.
+
+
+
+## by Week
+* [27-2022](27_2022.md)
